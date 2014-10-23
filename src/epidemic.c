@@ -329,7 +329,7 @@ void make_connections(int self)
 		
 		for(i = 0; i < CONNECT_RETRY; i++)
 		{
-			poss_connect = (int)randf(POP_SIZE);
+			poss_connect = (int)randf(POP_SIZE - 1); //make sure to avoid array out-of-bounds, or RNG is inclusive of the upper bound.
 			
 			//not the same person, the person can admit another connection, and it is a new edge
 			if(poss_connect != self && POP[poss_connect]->new_connections_rem > 0 && is_new_elem(connections, poss_connect))
